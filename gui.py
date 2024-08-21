@@ -59,7 +59,13 @@ class GameGUI:
                 self.game.foul_message_timer -= 1
             elif self.game.foul_message_timer <= 0:
                 self.game.foul_occurred = False
-
+        # Add the credits text
+        font = pygame.font.Font(None, 24)
+        credits_text = "github/hbarquanta, 2024"
+        text_surface = font.render(credits_text, True, BLACK)
+        text_rect = text_surface.get_rect(bottomright=(TABLE_WIDTH - 10, TABLE_HEIGHT + 100))
+        self.screen.blit(text_surface, text_rect)
+    
     def draw_power_slider(self, screen, x, y, value, max_value, label):
         segment_width = SLIDER_WIDTH // 4
         pygame.draw.rect(screen, (0, 255, 0), (x, y, segment_width * 2, SLIDER_HEIGHT))
